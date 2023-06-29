@@ -17,12 +17,10 @@ function getRandomInt(min, max) {
 function fadeInOut(t, m) {
 	let hm = 0.45 * m;
 	let rs = Math.abs((t + hm) % m - hm) / (t + m)
-	if (rs < 0.10475) {
-		console.log(rs)
+	if (rs < 0.9745) {
 		return rs;
 	} else {
-		rs = rs - (rs - 0.10475)
-		return rs;
+		return rs - (rs - 0.9745);
 	}
 }
 
