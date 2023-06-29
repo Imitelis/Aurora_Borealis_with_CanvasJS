@@ -6,7 +6,7 @@ canvas.height = window.innerHeight;
 const minWidth = canvas.width * 0.005;
 const maxWidth = canvas.width * 0.015;
 const minHeight = canvas.height * 0.45;
-const maxHeight = canvas.height * 0.90;
+const maxHeight = canvas.height * 0.75;
 const minTTL = minHeight * 0.45;
 const maxTTL = maxHeight * 0.75;
 
@@ -17,10 +17,10 @@ function getRandomInt(min, max) {
 function fadeInOut(t, m) {
 	let hm = 0.45 * m;
 	let rs = Math.abs((t + hm) % m - hm) / (t + m)
-	if (rs < 0.9745) {
+	if (rs < 0.07) {
 		return rs;
 	} else {
-		return rs - (rs - 0.9745);
+		return rs - (rs - 0.07);
 	}
 }
 
@@ -37,10 +37,10 @@ class Light {
   
 	draw() {
 		let g = ctx.createLinearGradient(this.x, this.y - this.height, this.x, this.y);
-		g.addColorStop(0, `hsla(${this.hue}, 95%, 70%, 0)`);
-    	g.addColorStop(0.2, `hsla(${this.hue}, 95%, 55%, ${fadeInOut(this.fade / 2.75, this.ttl)})`);
-    	g.addColorStop(0.8, `hsla(${this.hue}, 95%, 60%, ${fadeInOut(this.fade / 2.75, this.ttl)})`);
-    	g.addColorStop(1, `hsla(${this.hue}, 95%, 65%, 0)`);
+		g.addColorStop(0, `hsla(${this.hue}, 95%, 40%, 0)`);
+    	g.addColorStop(0.2, `hsla(${this.hue}, 95%, 55%, ${fadeInOut(this.fade / 2.75, this.ttl * 0.55)})`);
+    	g.addColorStop(0.8, `hsla(${this.hue}, 95%, 50%, ${fadeInOut(this.fade / 2.75, this.ttl * 0.55)})`);
+    	g.addColorStop(1, `hsla(${this.hue}, 95%, 45%, 0)`);
 
 	    const controlX = this.x + this.width / 1.45;
     	const controlY = this.y - this.height / 1.65;
@@ -81,7 +81,7 @@ class init {
     this.animate = this.animate.bind(this);
 
     this.lights = [];
-  	this.lineCount = Math.floor(canvas.width / 3.75);
+  	this.lineCount = Math.floor(canvas.width / 2.5);
 
     this.resize();
     this.animate();
