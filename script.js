@@ -38,29 +38,29 @@ class Light {
 	draw() {
 		let g = ctx.createLinearGradient(this.x, this.y - this.height, this.x, this.y);
 		g.addColorStop(0, `hsla(${this.hue}, 95%, 40%, 0)`);
-    	g.addColorStop(0.2, `hsla(${this.hue}, 95%, 55%, ${fadeInOut(this.fade / 2.75, this.ttl * 0.55)})`);
-    	g.addColorStop(0.8, `hsla(${this.hue}, 95%, 50%, ${fadeInOut(this.fade / 2.75, this.ttl * 0.55)})`);
-    	g.addColorStop(1, `hsla(${this.hue}, 95%, 45%, 0)`);
+    		g.addColorStop(0.2, `hsla(${this.hue}, 95%, 55%, ${fadeInOut(this.fade / 2.75, this.ttl * 0.55)})`);
+    		g.addColorStop(0.8, `hsla(${this.hue}, 95%, 50%, ${fadeInOut(this.fade / 2.75, this.ttl * 0.55)})`);
+    		g.addColorStop(1, `hsla(${this.hue}, 95%, 45%, 0)`);
 
-	    const controlX = this.x + this.width / 1.45;
-    	const controlY = this.y - this.height / 1.65;
+	    	const controlX = this.x + this.width / 1.45;
+    		const controlY = this.y - this.height / 1.65;
 
-	    ctx.save();
+	    	ctx.save();
 		ctx.beginPath();
 		ctx.strokeStyle = g;
 		ctx.lineWidth = getRandomInt(this.width * 1, this.width * 2.75);
-    	ctx.lineCap = 'round';
+    		ctx.lineCap = 'round';
 		ctx.moveTo(this.x, this.y - this.height);
-    	ctx.lineTo(this.x, this.y);
+    		ctx.lineTo(this.x, this.y);
 		ctx.quadraticCurveTo(
 			controlX, controlY,
-      		this.x + this.width / 1.5, this.y
-    	);
-    	ctx.quadraticCurveTo(
-      		controlX, controlY,
-      		this.x, this.y - this.height
-    	);
-	    ctx.stroke();
+      			this.x + this.width / 1.5, this.y
+    		);
+    		ctx.quadraticCurveTo(
+      			controlX, controlY,
+      			this.x, this.y - this.height
+    		);
+	    	ctx.stroke();
 		ctx.closePath();
 		ctx.restore();
 	}
@@ -78,13 +78,13 @@ class Light {
 class init {
   constructor() {
     
-    this.animate = this.animate.bind(this);
+    	this.animate = this.animate.bind(this);
 
-    this.lights = [];
+	this.lights = [];
   	this.lineCount = Math.floor(canvas.width / 2.5);
 
-    this.resize();
-    this.animate();
+    	this.resize();
+    	this.animate();
   }
 
   resize() {
